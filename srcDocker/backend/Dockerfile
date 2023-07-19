@@ -10,12 +10,15 @@ RUN npm install
 RUN npm install nest
 RUN npm install glob rimraf
 
+
 EXPOSE 3000
 
 RUN npm i -g @nestjs/cli
+RUN npm install @nestjs/typeorm typeorm
 RUN nest new backend -p npm
+# RUN nest generate module database
 
-WORKDIR /usr/src/app/backend
+# WORKDIR /usr/src/app/backend
 
 RUN npm run build
 

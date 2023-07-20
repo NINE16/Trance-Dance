@@ -15,8 +15,12 @@ EXPOSE 3001
 
 RUN npm i -g @nestjs/cli
 RUN npm install @nestjs/typeorm typeorm
-RUN nest new backend -p npm
+RUN npm install pg
+COPY backnest/ /usr/src/app/backend
+
+# RUN nest new backend -p npm
 # RUN nest generate module database
+
 
 WORKDIR /usr/src/app/backend
 

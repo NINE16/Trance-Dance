@@ -14,7 +14,7 @@ RUN npm install glob rimraf
 EXPOSE 3001
 
 RUN npm i -g @nestjs/cli
-RUN npm install @nestjs/typeorm typeorm
+# RUN npm install @nestjs/typeorm typeorm
 RUN npm install pg
 COPY backnest/ /usr/src/app/backend
 

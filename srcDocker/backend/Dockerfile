@@ -5,16 +5,19 @@ RUN apt-get install -y postgresql-client
 
 WORKDIR /usr/src/app
 
+# Copy only the package.json and package-lock.json first to leverage Docker caching
+COPY backnest/package*.json ./
+
 RUN npm init -y
 RUN npm install
 RUN npm install nest
 RUN npm install glob rimraf
 
-
 EXPOSE 3001
 
-RUN npm i -g @nestjs/cli
-# RUN npm install @nestjs/typeorm typeorm
+RUN npm ci
+
+RUN npm install @nestjs/typeorm typeorm
 RUN npm install pg
 COPY backnest/ /usr/src/app/backend
 
